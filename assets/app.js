@@ -4,9 +4,9 @@
  * We recommend including the built version of this JavaScript file
  * (and its CSS file) in your base layout (base.html.twig).
  */
+// Import our custom CSS
+import './styles/app.scss'
 
-// any CSS you import will output into a single css file (app.css in this case)
-import './styles/app.scss';
-
-// start the Stimulus application
-import './bootstrap';
+// Import all of Bootstrap's JS
+import * as bootstrap from 'bootstrap'
+import "bootswatch/dist/morph/bootstrap.min.css";

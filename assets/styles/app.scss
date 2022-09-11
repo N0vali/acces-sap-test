@@ -1,3 +1,9 @@
-// Import all of Bootstrap's CSS
+
+@import "~bootswatch/dist/morph/variables";
 @import "~bootstrap/scss/bootstrap";
-@import "bootswatch/dist/morph/bootstrap.min.css";
+@import "~bootswatch/dist/morph/bootswatch";
+
+.logo{
+    height: 89px;
+    width: 220px;
+}
