@@ -22,9 +22,9 @@
             <tbody>
             {% for invoice in invoices %}
                 {% if loop.index % 2 == 0 %}
-                    <tr class="morph-shadow">
+                    <tr class="morph-shadow-darker">
                 {% else %}
-                 <tr class="morph-shadow-lighter">
+                 <tr class="morph-shadow">
                 {% endif %}
                     <td scope="row" class="align-middle p-4">{{ invoice.id }}</td>
                     <td scope="row" class="align-middle p-4">{{ invoice.designation |u.truncate(50) }}</td>
@@ -53,7 +53,7 @@
         <div class="row mt-5">
             <div class="col-4 mx-auto">
                 <div class="d-grid gap-2">
-                    <a class="btn btn-lg btn-primary" href="{{ path('app_invoice_new') }}">Nouvelle Facture</a>
+                    <a class="btn btn-lg btn-secondary" href="{{ path('app_invoice_new') }}">Nouvelle Facture</a>
                 </div>
             </div>    
         </div>
