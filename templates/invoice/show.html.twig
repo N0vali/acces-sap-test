@@ -27,6 +27,17 @@
                 <th>PriceAti</th>
                 <td>{{ invoice.priceAti }}</td>
             </tr>
+               <tr>
+                <th>Products</th>
+                {% if  invoice.products|length > 0 %}
+                <td>{{invoice.products|length}}</td>
+                    {% for product in invoice.products %}
+                    <td class="text-warning">{{ product.name }}</td>
+                    {% endfor %}
+                {% else %}
+                <td class="text-danger">pas de produit</td>
+                {% endif %}
+            </tr>
         </tbody>
     </table>
 

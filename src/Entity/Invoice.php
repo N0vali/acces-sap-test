@@ -31,6 +31,10 @@ class Invoice
     #[ORM\ManyToMany(targetEntity: Product::class, inversedBy: 'invoices')]
     private Collection $product;
 
+    #[ORM\ManyToOne(inversedBy: 'invoices')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?User $user = null;
+
     public function __construct()
     {
         $this->product = new ArrayCollection();
@@ -90,14 +94,14 @@ class Invoice
     }
 
     /**
-     * @return Collection<int, Product>
+     * @return Collection<int, Products>
      */
-    public function getProduct(): Collection
+    public function getProducts(): Collection
     {
         return $this->product;
     }
 
-    public function addProduct(Product $product): self
+    public function addProducts(Product $product): self
     {
         if (!$this->product->contains($product)) {
             $this->product->add($product);
@@ -106,9 +110,21 @@ class Invoice
         return $this;
     }
 
-    public function removeProduct(Product $product): self
+    public function removeProducts(Product $product): self
     {
-        $this->product->removeElement($product);
+        $this->products->removeElement($product);
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }
