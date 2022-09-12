@@ -3,39 +3,59 @@
 {% block title %}Invoice index{% endblock %}
 
 {% block body %}
-    <h1>Invoice index</h1>
+    <div class="container">
+        <div class="row text-center py-5">
+            <h1>Factures</h1>
+        </div>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Designation</th>
-                <th>Description</th>
-                <th>PriceExl</th>
-                <th>PriceAti</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for invoice in invoices %}
-            <tr>
-                <td>{{ invoice.id }}</td>
-                <td>{{ invoice.designation }}</td>
-                <td>{{ invoice.description }}</td>
-                <td>{{ invoice.priceExl }}</td>
-                <td>{{ invoice.priceAti }}</td>
-                <td>
-                    <a href="{{ path('app_invoice_show', {'id': invoice.id}) }}">show</a>
-                    <a href="{{ path('app_invoice_edit', {'id': invoice.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="6">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('app_invoice_new') }}">Create new</a>
+        <table class="table table-hover">
+            <thead>
+                <tr class="morph-shadow text-dark">
+                    <th scope="col">Id</th>
+                    <th scope="col">Designation</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">PriceExl</th>
+                    <th scope="col">PriceAti</th>
+                    <th scope="col">actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for invoice in invoices %}
+                {% if loop.index % 2 == 0 %}
+                    <tr class="morph-shadow">
+                {% else %}
+                 <tr class="morph-shadow-lighter">
+                {% endif %}
+                    <td scope="row" class="align-middle p-4">{{ invoice.id }}</td>
+                    <td scope="row" class="align-middle p-4">{{ invoice.designation |u.truncate(50) }}</td>
+                    <td scope="row" class="align-middle p-4">{{ invoice.description |u.truncate(50)}}</td>
+                    <td scope="row" class="align-middle p-4">{{ invoice.priceExl }}</td>
+                    <td scope="row" class="align-middle p-4">{{ invoice.priceAti }}</td>
+                    <td scope="row" class="align-middle p-4">
+                        <div class="btn-group" role="group">
+                            <a  class="btn btn-secondary" href="{{ path('app_invoice_show', {'id': invoice.id}) }}">
+                            <i class="fa-solid fa-eye text-info"></i>
+                            </a>
+                            <a class="btn btn-secondary"  href="{{ path('app_invoice_edit', {'id': invoice.id}) }}">
+                                <i class="fa-solid fa-pen-to-square text-warning"></i>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+        
+            {% else %}
+                <tr class="morph-shadow-lighter">
+                    <td colspan="6">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <div class="row mt-5">
+            <div class="col-4 mx-auto">
+                <div class="d-grid gap-2">
+                    <a class="btn btn-lg btn-primary" href="{{ path('app_invoice_new') }}">Nouvelle Facture</a>
+                </div>
+            </div>    
+        </div>
+      </div>
 {% endblock %}

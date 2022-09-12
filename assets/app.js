@@ -6,6 +6,7 @@
  */
 // Import our custom CSS
 import './styles/app.scss'
+import './fontawesome-free-6.2.0-web/js/all'
 
 // Import all of Bootstrap's JS
 import * as bootstrap from 'bootstrap'

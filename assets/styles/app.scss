@@ -2,8 +2,28 @@
 @import "~bootswatch/dist/morph/variables";
 @import "~bootstrap/scss/bootstrap";
 @import "~bootswatch/dist/morph/bootswatch";
+@import "../fontawesome-free-6.2.0-web/css/fontawesome.css";
+@import "../fontawesome-free-6.2.0-web/css/brands.css";
+@import "../fontawesome-free-6.2.0-web/css/solid.css";
 
 .logo{
     height: 89px;
     width: 220px;
+}
+
+.morph-shadow {
+    background-color: #d9e3f1 !important;
+    border: none;
+    box-shadow: 5px 5px 10px rgb(55 94 148 / 20%), -5px -5px 10px rgb(255 255 255 / 40%)!important;
+    transition: background-color 0.15s ease-in-out, border 0.15s ease-in-out, box-shadow 0.15s ease-in-out, color 0.15s ease-in-out;
+    padding: 1rem !important;
+    border-radius: 0.375rem;
+}
+.morph-shadow-lighter {
+    background-color: #7b8ab84d  !important;
+    border: none;
+    box-shadow: 5px 5px 10px rgb(55 94 148 / 20%), -5px -5px 10px rgb(255 255 255 / 40%)!important;
+    transition: background-color 0.15s ease-in-out, border 0.15s ease-in-out, box-shadow 0.15s ease-in-out, color 0.15s ease-in-out;
+    padding: 1rem !important;
+    border-radius: 0.375rem;
 }
