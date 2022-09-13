@@ -30,10 +30,11 @@ class AppFixtures extends Fixture
         $manager->flush();
         // create 20 products
             for ($i = 0; $i < 20; $i++) {
+            $priceAti = mt_rand(10, 100);
             $product = new Product();
             $product->setName('product '.$i);
-            $product->setPriceExl(mt_rand(10, 100));
-            $product->setPriceAti(mt_rand(10, 100));
+            $product->setPriceExl($priceAti);
+            $product->setPriceAti($priceAti);
             $manager->persist($product);
         }
         $manager->flush();
@@ -45,8 +46,9 @@ class AppFixtures extends Fixture
             $invoice->addProducts($product);
             $invoice->setDesignation('invoice designation'.$i);
             $invoice->setDescription('invoice description'.$i);
-            $invoice->setPriceExl(mt_rand(10, 100));
-            $invoice->setPriceAti(mt_rand(10, 100));
+            $productPrice = $product->getPriceExl();
+            $invoice->setPriceAti($productPrice);
+            $invoice->setPriceExl($productPrice);
             $manager->persist($invoice);
         }
         $manager->flush();

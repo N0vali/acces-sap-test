@@ -55,9 +55,9 @@ class Product
         return $this->priceExl;
     }
 
-    public function setPriceExl(?string $priceExl): self
+    public function setPriceExl(?string $priceAti): self
     {
-        $this->priceExl = $priceExl;
+        $this->priceExl = $priceAti /1.20;
 
         return $this;
     }
@@ -86,7 +86,7 @@ class Product
     {
         if (!$this->invoices->contains($invoice)) {
             $this->invoices->add($invoice);
-            $invoice->addProduct($this);
+            $invoice->addProducts($this);
         }
 
         return $this;
@@ -95,7 +95,7 @@ class Product
     public function removeInvoice(Invoice $invoice): self
     {
         if ($this->invoices->removeElement($invoice)) {
-            $invoice->removeProduct($this);
+            $invoice->removeProducts($this);
         }
 
         return $this;

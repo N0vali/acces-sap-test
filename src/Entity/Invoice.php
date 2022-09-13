@@ -23,10 +23,10 @@ class Invoice
     private ?string $description = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 7, scale: 2)]
-    private ?string $priceExl = null;
+    private string $priceExl;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 7, scale: 2, nullable: true)]
-    private ?string $priceAti = null;
+    private string $priceAti;
 
     #[ORM\ManyToMany(targetEntity: Product::class, inversedBy: 'invoices')]
     private Collection $product;
@@ -74,9 +74,9 @@ class Invoice
         return $this->priceExl;
     }
 
-    public function setPriceExl(string $priceExl): self
+    public function setPriceExl(string $priceAti): self
     {
-        $this->priceExl = $priceExl;
+        $this->priceExl = $priceAti/1.20;
 
         return $this;
     }
